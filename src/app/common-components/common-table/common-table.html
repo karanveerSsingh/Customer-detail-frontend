@@ -1,0 +1,376 @@
+<!-- <div class="desktop-view">
+  <table class="common-table" mat-table [dataSource]="inVoiceData">
+    <caption class="d-none">Invoice Table Data</caption>
+    <ng-container matColumnDef="inVoiceNo">
+      <th mat-header-cell *matHeaderCellDef>Invoice No.</th>
+      <td mat-cell *matCellDef="let element">
+        <u style="cursor: pointer">{{ element.inVoiceNo }}</u>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef>Customer name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.customerName }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accEnquiryNo">
+      <th mat-header-cell *matHeaderCellDef>Acc Enquiry No</th>
+      <td mat-cell *matCellDef="let element">{{ element.accEnquiryNo }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fiscalYear">
+      <th mat-header-cell *matHeaderCellDef>Fiscal year</th>
+      <td mat-cell *matCellDef="let element">{{ element.fiscalYear }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dealerParentName">
+      <th mat-header-cell *matHeaderCellDef>Dealer Parent Name</th>
+      <td mat-cell *matCellDef="let element">
+        <app-common-tooltip [message]="element.dealerParentName" [position]="'above'">
+          <div
+            [ngClass]="{
+              'mode-greenExtra': !!element.dealerParentName
+            }">
+            <div class="delear-parent">{{ element.dealerParentName }}</div>
+          </div>
+        </app-common-tooltip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="dealerCode">
+      <th mat-header-cell *matHeaderCellDef>Dealer Code</th>
+      <td mat-cell *matCellDef="let element">
+        <div
+          [ngClass]="{
+            container: !!element.dealerCode
+          }">
+          <app-common-tooltip [message]="element.dealerCode" [position]="'above'">
+            <div
+              [ngClass]="{
+                'case-container': !!element.dealerCode
+              }">
+              {{ element.dealerCode }}
+            </div>
+          </app-common-tooltip>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="locationDescriptionCode">
+      <th mat-header-cell *matHeaderCellDef>Location Description (Code)</th>
+
+      <td mat-cell *matCellDef="let element">
+        <app-common-tooltip [message]="element.locationDescriptionCode" [position]="'above'">
+          {{ element.locationDescriptionCode }}
+        </app-common-tooltip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="invoiceDownloadIcon" alt="invoice-download" class="action-download" />
+        <img [src]="invoiceShareIcon" alt="invoice-share" />
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<div class="mobile-view">
+  <div *ngFor="let element of pagedData" class="card mobile-sec-box">
+    <div class="card-body">
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Invoice No.</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">
+          <u>{{ element.inVoiceNo }}</u>
+        </div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Customer Name</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.customerName }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Acc Enquiry No</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.accEnquiryNo }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Fiscal Year</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.fiscalYear }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Dealer Parent Name</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.dealerParentName }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Dealer Code</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.dealerCode }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Location Description Code</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">{{ element.locationDescriptionCode }}</div>
+      </div>
+      <div class="vehicle-booking-sprate-box">
+        <div class="vehicle-booking-head">
+          <h6>Action</h6>
+        </div>
+        <div class="listColen">:</div>
+        <div class="vehicle-booking-data">
+          <div class="download-share-imgs">
+            <div>
+              <img [src]="invoiceDownloadIcon" alt="invoice-download" class="action-download" />
+            </div>
+            <div><img [src]="invoiceShareIcon" alt="invoice-share" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  [pageSize]="10"
+  showFirstLastButtons
+  (page)="onPageChange($event)"></mat-paginator> -->
+<div class="container-fluid d-none d-md-block">
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="tableWrapper" #tableWrapper>
+        <table
+          matSort
+          mat-table
+          [dataSource]="dataSource"
+          (matSortChange)="onSortChange($event)"
+          class="common-table">
+          @if (dataSource.data.length === 0) {
+            <caption>
+              <img
+                src="assets/images/no-data-concept-illustration_86047-486 1.avif"
+                alt="No Data Found" />
+            </caption>
+          }
+          @for (row of upperHeader(); track row.key) {
+            <ng-container [matColumnDef]="row.key">
+              <th mat-header-cell *matHeaderCellDef [attr.colspan]="row.colspan || 1">
+                <div [ngClass]="row.displayValue === '' ? '' : 'secondry-header'">
+                  {{ row.displayValue }}
+                </div>
+              </th>
+            </ng-container>
+          }
+
+          @for (definition of tableDefinition; track definition.key) {
+            <ng-container [matColumnDef]="definition.key">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="main-header-head"
+                [ngClass]="definition.cssClass">
+                <div class="header-content">
+                  <span>{{ definition.displayValue }}</span>
+                  <button
+                    *ngIf="!definition.disableSorting"
+                    mat-icon-button
+                    mat-sort-header="{{ definition.key }}"
+                    disableRipple
+                    class="sort-button"
+                    (click)="$event.stopPropagation()">
+                    <span class="cdk-visually-hidden">Sort {{ definition.displayValue }}</span>
+                  </button>
+                </div>
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let row"
+                (click)="onLinkClick(row, definition.link)"
+                [ngClass]="definition.cssClass">
+                @if (definition.cellTemplate) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      definition.cellTemplate;
+                      context: { $implicit: row }
+                    "></ng-container>
+                } @else {
+                  <span
+                    [innerHTML]="
+                      definition.render
+                        ? definition.render(row)
+                        : truncateHtml(getCellValue(row, definition), 22)
+                    "
+                    [matTooltip]="getTooltip(row, definition)"
+                    matTooltipPosition="above"></span>
+                }
+              </td>
+
+              <td mat-footer-cell *matFooterCellDef>
+                {{ footerData()[definition.dataKey] }}
+              </td>
+            </ng-container>
+          }
+
+          @if (showSecondayHeader()) {
+            <tr mat-header-row *matHeaderRowDef="secondaryDisplayedColumns"></tr>
+          }
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; let i = index; columns: displayedColumns"
+            [class.odd-row]="i % 2 === 0"
+            [class.even-row]="i % 2 === 1"
+            (click)="onRowClick(row)"></tr>
+
+          @if (showFooter()) {
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+          }
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="mobile-view d-block d-md-none"
+  [ngClass]="{ 'no-data-bg': mobileVIewDataSource.length === 0 }">
+  @if (mobileVIewDataSource.length === 0) {
+    <caption class="no-data-caption">
+      <img src="assets/images/no-data-concept-illustration_86047-486 1.avif" alt="No Data Found" />
+    </caption>
+  }
+  @for (row of mobileVIewDataSource; let rowIdx = $index; track rowIdx) {
+    <div class="custom-table-card mb-3">
+      <div>
+        <button class="expand-button" mat-icon-button (click)="toggleExpand(rowIdx)">
+          <mat-icon>
+            {{ expandedRowIndices.has(rowIdx) ? 'expand_less' : 'expand_more' }}
+          </mat-icon>
+        </button>
+      </div>
+      @for (definition of tableDefinition.slice(0, 4); track definition.key) {
+        <div class="table-name">
+          <div class="data-text">{{ definition.displayValue }}</div>
+          <span class="colon">:</span>
+          <div
+            class="data-value"
+            (click)="onLinkClick(row, definition.link)"
+            [class.clickable]="definition.link">
+            @if (definition.cellTemplate) {
+              <ng-container
+                *ngTemplateOutlet="
+                  definition.cellTemplate;
+                  context: { $implicit: row }
+                "></ng-container>
+            } @else {
+              @if (definition.render) {
+                @if (definition.useLimitPipe) {
+                  <span
+                    [innerHTML]="definition.render(row) | limitWords: definition.wordLimit || 20"
+                    [matTooltip]="getTooltip(row, definition)"
+                    matTooltipPosition="above"
+                    #tooltip="matTooltip"
+                    (click)="onLinkClick(row, definition.link, $event, tooltip)"></span>
+                } @else {
+                  <span
+                    [innerHTML]="definition.render(row)"
+                    [matTooltip]="getTooltip(row, definition)"
+                    matTooltipPosition="above"
+                    #tooltip="matTooltip"
+                    (click)="onLinkClick(row, definition.link, $event, tooltip)"></span>
+                }
+              } @else {
+                <span
+                  [matTooltip]="getTooltip(row, definition)"
+                  matTooltipPosition="above"
+                  #tooltip="matTooltip"
+                  (click)="onLinkClick(row, definition.link, $event, tooltip)">
+                  {{ row[definition.dataKey] }}
+                </span>
+              }
+            }
+          </div>
+        </div>
+      }
+
+      @if (expandedRowIndices.has(rowIdx)) {
+        <div class="w-100">
+          @for (definition of tableDefinition.slice(4); track definition.key) {
+            <div class="table-name">
+              <div class="data-text">{{ definition.displayValue }}</div>
+              <span class="colon">:</span>
+              <div class="data-value">
+                @if (definition.cellTemplate) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      definition.cellTemplate;
+                      context: { $implicit: row }
+                    "></ng-container>
+                } @else {
+                  @if (definition.render) {
+                    @if (definition.useLimitPipe) {
+                      <span
+                        [innerHTML]="
+                          definition.render(row) | limitWords: definition.wordLimit || 20
+                        "
+                        [matTooltip]="getTooltip(row, definition)"
+                        matTooltipPosition="above"
+                        #tooltip="matTooltip"
+                        (click)="onLinkClick(row, definition.link, $event, tooltip)"></span>
+                    } @else {
+                      <span
+                        [innerHTML]="definition.render(row)"
+                        [matTooltip]="getTooltip(row, definition)"
+                        matTooltipPosition="above"
+                        #tooltip="matTooltip"
+                        (click)="onLinkClick(row, definition.link, $event, tooltip)"></span>
+                    }
+                  } @else {
+                    <span
+                      [matTooltip]="getTooltip(row, definition)"
+                      matTooltipPosition="above"
+                      #tooltip="matTooltip"
+                      (click)="onLinkClick(row, definition.link, $event, tooltip)">
+                      {{ row[definition.dataKey] }}
+                    </span>
+                  }
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
+<div class="radius-change">
+  <mat-paginator
+    #paginator
+    aria-label="Select page"
+    [length]="listLength()"
+    [pageSize]="listSize()"
+    [pageIndex]="listPageIndex()"
+    [pageSizeOptions]="listPageSizeOptions"
+    (page)="pageEventTriggered($event)"></mat-paginator>
+</div>

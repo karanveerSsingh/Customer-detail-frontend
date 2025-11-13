@@ -1,0 +1,30 @@
+export interface PeriodicElement {
+  vehicleBookingNo: string;
+  vehicleBookingDate: string;
+  customerName: string;
+  locationDescription: string;
+  source: string;
+  mode: string;
+  assigned: string;
+  accessoryBooked: boolean;
+  model: string;
+  variant: string;
+  amountOfAccessories: string;
+  ddlAmount: string;
+  orderStatusOfAccessories: string;
+  firstTimeFollowup: string;
+  paymentStatus: boolean | undefined;
+  firstFollowUpDate: string;
+  nextFollowUpDate: string;
+  remark: string;
+  vehicleDeliveryDate: string;
+  accessoryEnquiryNo: string;
+  enquiryDate: string;
+  typeOfOrder: string;
+  orderReadyNess: string;
+  ageingPeriod: string;
+  accessoriesDeliveryDate: string;
+  followUpRemark: string;
+  carStatus: string;
+  miDate: string;
+}

@@ -1,0 +1,119 @@
+<div class="student-form-container">
+  <form class="student-form" (ngSubmit)="onSave()">
+    <div class="header-container">
+      <div class="header-title">{{ editId ? 'Update Customer Details' : 'Add New Customer' }}</div>
+      <div class="cls-btn" (click)="onCancel()"><mat-icon>close</mat-icon></div>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="customerName">Customer Name</label>
+        <input
+          id="customerName"
+          [(ngModel)]="newStudent.customerName"
+          name="customerName"
+          placeholder="Enter customer name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Customer Phone</label>
+        <input
+          id="customerPhone"
+          [(ngModel)]="newStudent.customerPhone"
+          name="customerPhone"
+          placeholder="Enter phone number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleName">Vehicle Name</label>
+        <input
+          id="vehicleName"
+          [(ngModel)]="newStudent.vehicleName"
+          name="vehicleName"
+          placeholder="Enter vehicle name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleNumber">Vehicle Number</label>
+        <input
+          id="vehicleNumber"
+          [(ngModel)]="newStudent.vehicleNumber"
+          name="vehicleNumber"
+          placeholder="Enter vehicle number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleChassis">Vehicle Chassis</label>
+        <input
+          id="vehicleChassis"
+          [(ngModel)]="newStudent.vehicleChassis"
+          name="vehicleChassis"
+          placeholder="Enter chassis number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleEngineNumber">Vehicle Engine Number</label>
+        <input
+          id="vehicleEngineNumber"
+          [(ngModel)]="newStudent.vehicleEngineNumber"
+          name="vehicleEngineNumber"
+          placeholder="Enter engine number"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="bankName">Bank Name</label>
+        <input
+          id="bankName"
+          [(ngModel)]="newStudent.bankName"
+          name="bankName"
+          placeholder="Enter bank name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="paidAmount">Paid Amount</label>
+        <input
+          id="paidAmount"
+          [(ngModel)]="newStudent.paidAmount"
+          name="paidAmount"
+          placeholder="Enter paid amount"
+          required
+        />
+      </div>
+
+      <div class="form-group full-width">
+        <label for="totalFee">Total Fee</label>
+        <input
+          id="totalFee"
+          [(ngModel)]="newStudent.totalFee"
+          name="totalFee"
+          placeholder="Enter total fee"
+          type="number"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="submit">
+        {{ editId ? 'Update' : 'Add' }}
+      </button>
+      <button type="button" class="" (click)="onCancel()" *ngIf="editId">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

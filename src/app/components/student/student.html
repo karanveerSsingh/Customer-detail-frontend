@@ -1,0 +1,246 @@
+<div class="student-container">
+  <div>
+    <!-- <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Inventory Management</h1> -->
+  </div>
+  <div class="summary-box">
+    <div class="summary-item">
+      <mat-icon>people</mat-icon>
+      <div class="summary-title">All Users</div>
+      <div class="summary-value">{{ students.length }}</div>
+
+      <div class="summary-subtitle"></div>
+    </div>
+
+    <div class="summary-item">
+      <mat-icon>attach_money</mat-icon>
+      <div class="summary-title">Total Due Amount</div>
+      <div class="summary-value">₹{{ getTotalDue() }}</div>
+      <div class="summary-subtitle"></div>
+    </div>
+
+    <div class="summary-item">
+      <mat-icon>trending_up</mat-icon>
+      <div class="summary-title">This Month</div>
+      <div class="summary-value">{{ monthlyCustomerCount }}</div>
+      <!-- <div class="summary-subtitle">+8.12% from last month</div> -->
+      <div class="summary-subtitle"> {{ monthlyGrowthPercent | number:'1.2-2' }}% from last month ({{ lastMonthCustomerCount }})</div>
+
+    </div>
+
+    <div class="summary-item">
+      <mat-icon>account_balance</mat-icon>
+      <div class="summary-title">All Time Sales</div>
+      <div class="summary-value">003</div>
+      <div class="summary-subtitle">+12.34% growth</div>
+    </div>
+  </div>
+
+  <div class="search-section">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search Here" class="search-input" />
+    <button class="search-button" type="button" (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button class="clear-button" type="button" (click)="clearSearch()">Clear</button>
+  </div>
+
+  <div class="add-user-button">
+    <button (click)="openAddUserDialog()">Add User</button>
+  </div>
+
+  <div class="desktop-view">
+    <table class="common-table" mat-table [dataSource]="customerData">
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef>Customer name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.customerName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerPhone">
+        <th mat-header-cell *matHeaderCellDef>Customer Phone</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.customerPhone }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicleName">
+        <th mat-header-cell *matHeaderCellDef>Vehicle Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.vehicleName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicleNumber">
+        <th mat-header-cell *matHeaderCellDef>Vehicle Number</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.vehicleNumber }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicleChassis">
+        <th mat-header-cell *matHeaderCellDef>Vehicle Chassis</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.vehicleChassis }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicleEngineNumber">
+        <th mat-header-cell *matHeaderCellDef>Vehicle Engine Number</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.vehicleEngineNumber }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="bankName">
+        <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.bankName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalFee">
+        <th mat-header-cell *matHeaderCellDef>Total Fee</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="currency">₹ {{ element.totalFee || 0 }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paidAmount">
+        <th mat-header-cell *matHeaderCellDef>Paid Amount</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="currency">₹ {{ element.paidAmount || 0 }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dueAmount">
+        <th mat-header-cell *matHeaderCellDef>Due Amount</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="currency">₹ {{ getDueAmount(element) }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef>Progress</th>
+        <td mat-cell *matCellDef="let element">
+          <app-common-tooltip [message]="element.progress" [position]="'above'">
+            <div class="progress-container">
+              <div class="progress-bar" [style.width.%]="getProgressPercentage(element)">
+                {{ getProgressPercentage(element) }}%
+              </div>
+            </div>
+          </app-common-tooltip>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="action-buttons">
+            <button (click)="edit(element)">Edit</button>
+            <button (click)="delete(element._id)">Delete</button>
+            <button (click)="selectForPayment(element._id)">Add Payment</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <div class="mobile-view">
+    <div *ngFor="let element of pagedData" class="card mobile-sec-box">
+      <div class="card-body">
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Customer Name</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">{{ element.customerName }}</div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Customer Phone</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">{{ element.customerPhone }}</div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Vehicle Name</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">{{ element.vehicleName }}</div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Vehicle Number</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">{{ element.vehicleNumber }}</div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Total Fee</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">
+            <span class="currency">₹ {{ element.totalFee || 0 }}</span>
+          </div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Paid Amount</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">
+            <span class="currency">₹ {{ element.paidAmount || 0 }}</span>
+          </div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Due Amount</h6>
+          </div>
+          <div class="listColen">:</div>
+          <div class="vehicle-booking-data">
+            <span class="currency">₹ {{ getDueAmount(element) }}</span>
+          </div>
+        </div>
+        <div class="vehicle-booking-sprate-box">
+          <div class="vehicle-booking-head">
+            <h6>Progress</h6>
+          </div>
+          <div class="listColen">:</div>
+
+          <div class="progress-container">
+            <div class="progress-bar" [style.width.%]="getProgressPercentage(element)">
+              {{ getProgressPercentage(element) }}%
+            </div>
+          </div>
+        </div>
+
+        <div class="action-sprate-box">
+          <div class="action-head">
+            <h6>Action</h6>
+          </div>
+          <div class="action-listColen">:</div>
+
+          <div class="action-buttons-mobile">
+            <button (click)="edit(element)">Edit</button>
+            <button (click)="delete(element._id)">Delete</button>
+            <button (click)="selectForPayment(element._id)">Add Payment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="paginator-container">
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageSize]="10"
+      showFirstLastButtons
+      (page)="onPageChange($event)"
+    ></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.custom-tooltip {
+    max-width: 300px; 
+    white-space: pre-line; 
+    background-color: var(--black);
+    color: var(--white);
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+  
+  @media (min-width: 1200px) {
+    .custom-tooltip{
+        font-size: 14px;
+    }
+    
+  }
