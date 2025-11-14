@@ -151,10 +151,10 @@ import { StudentService } from '../../services/student';
 import { FormsModule } from '@angular/forms';
 import { CommonTooltip } from '../../common-components/common-tooltip/common-tooltip';
 import { MatIconModule } from '@angular/material/icon';
-import { AutoPikerInput } from '../../common-components/auto-piker-input/auto-piker-input';
-import { CommonInputComponent } from '../../common-components/common-input/common-input';
 import { DialogAddPayment } from '../dialog-add-payment/dialog-add-payment';
 import { DialogAddUser } from '../dialog-add-user/dialog-add-user';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 export interface CustomerData {
   customerName: string;
@@ -178,8 +178,6 @@ export interface CustomerData {
     FormsModule,
     CommonTooltip,
     MatIconModule,
-    AutoPikerInput,
-    CommonInputComponent,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -190,6 +188,7 @@ export interface CustomerData {
 export class StudentComponent implements OnInit, AfterViewInit {
   students: any[] = [];
   expandedRowIndices = new Set<number>();
+  private searchSubject = new Subject<string>();
   searchTerm: string = '';
   editId: string | null = null;
   selectedStudentId: string | null = null;
@@ -197,7 +196,12 @@ export class StudentComponent implements OnInit, AfterViewInit {
   readonly dialog = inject(MatDialog);
   readonly paymentAmountSignal = signal(0);
 
-  constructor(private service: StudentService) {}
+  constructor(private service: StudentService) {
+    // Debounce search
+    this.searchSubject.pipe(debounceTime(400), distinctUntilChanged()).subscribe((term) => {
+      this.search(term);
+    });
+  }
   newStudent = {
     customerName: '',
     customerPhone: '',
@@ -238,7 +242,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.loadStudents();
   }
 
-    toggleExpand(idx: number) {
+  toggleExpand(idx: number) {
     if (this.expandedRowIndices.has(idx)) {
       this.expandedRowIndices.delete(idx);
     } else {
@@ -255,29 +259,31 @@ export class StudentComponent implements OnInit, AfterViewInit {
   }
 
   calculateMonthlyCounts() {
-  const now = new Date();
-  const thisMonth = now.getMonth();
-  const thisYear = now.getFullYear();
+    const now = new Date();
+    const thisMonth = now.getMonth();
+    const thisYear = now.getFullYear();
 
-  const lastMonth = thisMonth === 0 ? 11 : thisMonth - 1;
-  const lastMonthYear = thisMonth === 0 ? thisYear - 1 : thisYear;
+    const lastMonth = thisMonth === 0 ? 11 : thisMonth - 1;
+    const lastMonthYear = thisMonth === 0 ? thisYear - 1 : thisYear;
 
-  this.monthlyCustomerCount = this.students.filter(s => {
-    const created = new Date(s.createdAt);
-    return created.getMonth() === thisMonth && created.getFullYear() === thisYear;
-  }).length;
+    this.monthlyCustomerCount = this.students.filter((s) => {
+      const created = new Date(s.createdAt);
+      return created.getMonth() === thisMonth && created.getFullYear() === thisYear;
+    }).length;
 
-  this.lastMonthCustomerCount = this.students.filter(s => {
-    const created = new Date(s.createdAt);
-    return created.getMonth() === lastMonth && created.getFullYear() === lastMonthYear;
-  }).length;
+    this.lastMonthCustomerCount = this.students.filter((s) => {
+      const created = new Date(s.createdAt);
+      return created.getMonth() === lastMonth && created.getFullYear() === lastMonthYear;
+    }).length;
 
-  if (this.lastMonthCustomerCount > 0) {
-    this.monthlyGrowthPercent = ((this.monthlyCustomerCount - this.lastMonthCustomerCount) / this.lastMonthCustomerCount) * 100;
-  } else {
-    this.monthlyGrowthPercent = this.monthlyCustomerCount > 0 ? 100 : 0;
+    if (this.lastMonthCustomerCount > 0) {
+      this.monthlyGrowthPercent =
+        ((this.monthlyCustomerCount - this.lastMonthCustomerCount) / this.lastMonthCustomerCount) *
+        100;
+    } else {
+      this.monthlyGrowthPercent = this.monthlyCustomerCount > 0 ? 100 : 0;
+    }
   }
-}
 
   save() {
     if (this.editId) {
@@ -323,8 +329,24 @@ export class StudentComponent implements OnInit, AfterViewInit {
     this.resetForm();
   }
 
-  search() {
-    const key = this.searchTerm.trim();
+  // search() {
+  //   const key = this.searchTerm.trim();
+  //   if (key === '') {
+  //     this.loadStudents();
+  //   } else {
+  //     this.service.search(key).subscribe((res) => {
+  //       this.students = res;
+  //       this.customerData.data = res; // Update mat-table data
+  //     });
+  //   }
+  // }
+
+  onSearchTermChange(term: string) {
+    this.searchSubject.next(term);
+  }
+
+  search(term?: string) {
+    const key = (term !== undefined ? term : this.searchTerm).trim();
     if (key === '') {
       this.loadStudents();
     } else {
@@ -394,6 +416,13 @@ export class StudentComponent implements OnInit, AfterViewInit {
     const paidAmount = student.paidAmount || 0;
     if (totalFee === 0) return 0;
     return Math.min(100, Math.round((paidAmount / totalFee) * 100));
+  }
+
+  getProgressColorClass(element: any): string {
+    const percent = this.getProgressPercentage(element);
+    if (percent >= 90) return 'progress-green';
+    if (percent >= 50) return 'progress-yellow';
+    return 'progress-red';
   }
 
   get pagedData() {

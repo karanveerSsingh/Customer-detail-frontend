@@ -1,9 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { StudentComponent } from './components/student/student';
-
+import { Register } from './components/register/register';
+import { RouterOutlet } from '@angular/router';
+import { Login } from './components/login/login';
 @Component({
   selector: 'app-root',
-  imports: [StudentComponent],
+  imports: [StudentComponent, Register, RouterOutlet, Login],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

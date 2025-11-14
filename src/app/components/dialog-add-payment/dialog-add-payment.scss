@@ -41,9 +41,24 @@
   .dialog-add-payment-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--fontBlack);
-    @media screen and (max-width: 567px) {
-      font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    .history {
+      border: 1 px solid var(--border-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #4facfe;
+      cursor: pointer;
     }
+    @media screen and (max-width: 567px) {
+      font-size: 14px;
+    }
+  }
+  .dialog-add-payment-input{
+    padding-left: 22px;
   }
   .btns {
     display: flex;
@@ -51,7 +66,7 @@
     gap: 10px;
     padding: 10px 20px 20px 20px;
     button {
-      padding: 8px 16px;
+      padding: 0.4rem 1rem;
       font-size: 14px;
       border-radius: 4px;
       border: none;
@@ -64,12 +79,16 @@
         background-color: var(--button-background-color);
         color: var(--fontBlack);
       }
+      // @media screen and (max-width: 567px) {
+      //   padding: 0.4rem 1rem;
+      //   font-size: 12px;
+      // }
     }
   }
 }
 
-::ng-deep{
-  .mat-mdc-dialog-container .mat-mdc-dialog-content{
+::ng-deep {
+  .mat-mdc-dialog-container .mat-mdc-dialog-content {
     padding: 0px 20px;
   }
 }

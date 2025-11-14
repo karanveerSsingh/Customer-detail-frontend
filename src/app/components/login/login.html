@@ -15,3 +15,8 @@
     </form>
   </div>
 </div> -->
+<form (ngSubmit)="onLogin()">
+  <input [(ngModel)]="email" name="email" placeholder="Email" />
+  <input [(ngModel)]="password" name="password" placeholder="Password" type="password" />
+  <button type="submit">Login</button>
+</form>

@@ -1,0 +1,9 @@
+<div class="history-dialog">
+  <p>Payment History</p>
+  <div *ngIf="paymentHistory.length === 0">No payments yet.</div>
+  <ul *ngIf="paymentHistory.length > 0">
+    <li *ngFor="let p of paymentHistory">
+      <span>{{ p.date | date:'medium' }}</span> - <strong>₹{{ p.amount }}</strong>
+    </li>
+  </ul>
+</div>

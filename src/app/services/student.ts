@@ -90,4 +90,10 @@ export class StudentService {
       map(res => res.count)
     );
   }
+
+  getPaymentHistory(id: string): Observable<any[]> {
+  return this.http.get<{ data: any[] }>(`${this.apiUrl}/${id}/payments`).pipe(
+    map(res => res.data)
+  );
+}
 }

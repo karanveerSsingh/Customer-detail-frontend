@@ -1,0 +1,57 @@
+.history-dialog {
+  background: #fff;
+  //   padding: 0 20px 24px  ;
+  border-radius: 12px;
+  //   min-width: 320px;
+  //   max-width: 400px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  p {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    margin: 0;
+    padding: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d3a4b;
+    letter-spacing: 0.5px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span {
+      color: #607d8b;
+      font-size: 0.97rem;
+    }
+
+    strong {
+      color: #388e3c;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-left: 12px;
+    }
+  }
+
+  div[ng-reflect-ng-if='true'] {
+    color: #b0b0b0;
+    font-style: italic;
+    margin: 18px 0;
+    text-align: center;
+  }
+}
