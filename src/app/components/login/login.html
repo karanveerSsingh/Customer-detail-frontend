@@ -1,22 +1,31 @@
-<!-- 
-<div class="login-container">
-  <div class="login-header"><p>login</p></div>
+<div class="login-section">
   <div class="login-form">
-    <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Enter your email" formControlName="email" required />
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Enter your password" formControlName="password" required type="password" />
-      </mat-form-field>
-      <button type="submit">Login</button>
+    <form (ngSubmit)="onLogin()">
+      <p class="login-name">Sign In</p>
+
+      <div class="login-email">
+        <input [(ngModel)]="email" name="email" placeholder="Email" />
+      </div>
+
+      <div class="login-email">
+        <input [(ngModel)]="password" name="password" placeholder="Password" type="password" />
+      </div>
+
+      <div class="forget-password-remember-me">
+        <label>
+          <input type="checkbox" name="rememberMe" />
+          Remember Me
+        </label>
+        <a href="#" class="forget-password">Forget Password</a>
+      </div>
+
+      <div class="btn-log">
+        <button class="login-btn" type="submit">Log in</button>
+      </div>
+      <div class="register">
+        <span class="or">or</span>
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
     </form>
   </div>
-</div> -->
-<form (ngSubmit)="onLogin()">
-  <input [(ngModel)]="email" name="email" placeholder="Email" />
-  <input [(ngModel)]="password" name="password" placeholder="Password" type="password" />
-  <button type="submit">Login</button>
-</form>
+</div>

@@ -1,0 +1,176 @@
+.login-section {
+  height: calc(100vh - 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-form {
+    max-width: calc(100% - 40px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.7) 100%);
+    border-radius: 14px;
+    padding: 2.25rem 2rem;
+    border: 1px solid var(--grey);
+    color: #e6e6e6;
+    display: block;
+
+    .login-name {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--fontBlack);
+      font-weight: 700;
+     margin: 0;
+    }
+
+    .login-email {
+      position: relative;
+      margin: 22px auto;
+      max-width: 320px;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+
+      input {
+        width: 100%;
+        height: 44px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 0.98rem;
+        padding: 6px 8px;
+        color: var(--fontBlack);
+      }
+    }
+
+    .forget-password-remember-me {
+      margin: 18px 0;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+      label {
+        display: flex;
+        align-items: center;
+        color: rgba(255,255,255,0.85);
+        input { margin-right: 8px; transform: scale(0.95); }
+      }
+      .forget-password {
+        text-decoration: none;
+        font-weight: 400;
+        color: var(--primary);
+      }
+    }
+
+    .btn-log {
+      margin-top: 10px;
+      .login-btn {
+        width: 100%;
+        height: 44px;
+        border-radius: 30px;
+        background: #fff;
+        color: #111;
+        border: none;
+        font-size: 1rem;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+        cursor: pointer;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .login-btn:active { transform: translateY(1px); }
+    }
+
+    .register {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 20px 0 6px;
+      color: rgba(255,255,255,0.75);
+
+      .or {
+        display: inline-block;
+        position: relative;
+        padding: 0 12px;
+        color: #d1cfcf;
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+
+      .or::before,
+      .or::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 2px;
+        background: rgba(255,255,255,0.12);
+        width: calc(50% - 50px);
+      }
+      .or::before { left: -100%; }
+      .or::after { right: -100%; } 
+
+      p {
+        margin: 8px 0 0;
+        a { color: #9b6ecb; text-decoration: none; font-weight: 700; }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-section {
+    align-items: flex-start;
+    padding: 2.5rem 0.75rem;
+    height: auto;
+
+    .login-form {
+      width: 60%;
+      max-width: 420px;
+      margin: 0 12px;
+      padding: 1.25rem 1rem;
+      border-radius: 12px;
+
+      .login-name { font-size: 1.6rem; margin-bottom: 8px; }
+      .login-email {
+        max-width: 100%;
+        margin: 14px auto;
+        border-bottom-width: 1px;
+        input {
+          height: 24px;
+          font-size: 12px;
+          padding: 6px 8px;
+        }
+      }
+
+      .forget-password-remember-me {
+        margin: 12px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        label { font-size: 0.9rem; }
+        .forget-password { align-self: flex-end; }
+      }
+
+      .btn-log { margin-top: 8px;
+        .login-btn {
+          height: 24px;
+          border-radius: 28px;
+          font-size: 12px;
+        }
+      }
+
+      .register {
+        margin: 6px 0 8px;
+        font-size: 0.88rem;
+
+        .or {
+            margin: 0;
+          display: inline-block;
+          padding: 0 10px;
+          font-size: 0.85rem;
+        }
+        .or::before, .or::after {
+          width: calc(50% - 30px);
+          top: 50%;
+        }
+      }
+    }
+  }
+}
