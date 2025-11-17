@@ -330,56 +330,6 @@ table {
       }
     }
   }
-  // .search-section {
-  //   margin-bottom: 20px;
-  //   display: flex;
-  //   .search-input {
-  //     // position: relative;
-  //     padding: 10px 12px;
-  //     border: 1px solid var(--border-color);
-  //     border-radius: 6px;
-  //     font-size: var(--mat-form-field-label-text-size);
-  //     width: 250px;
-  //     margin-right: 10px;
-  //     transition: border-color 0.3s ease;
-
-  //     &:focus {
-  //       outline: none;
-  //       border-color: var(--primary);
-  //       box-shadow: 0 0 0 3px rgba(44, 51, 148, 0.25);
-  //     }
-  //   }
-  //   .search-button {
-  //     // position: absolute;
-  //     padding: 5px 16px;
-  //     border: none;
-  //     border-radius: 5px;
-  //     // left: 227px;
-  //     // top: 216px;
-  //     font-size: var(--mat-form-field-label-text-size);
-  //     cursor: pointer;
-  //     background-color: var() --grey;
-  //     color: var(--white);
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     margin-right: 10px;
-
-  //     mat-icon {
-  //       color: var(--fontBlack);
-  //     }
-  //   }
-  //   .clear-button {
-  //     padding: 10px 20px;
-  //     border: 1px solid var(--border-color);
-  //     border-radius: 6px;
-  //     font-size: var(--mat-form-field-label-text-size);
-  //     cursor: pointer;
-  //     background-color: var() --grey;
-  //     color: var(--fontBlack);
-  //   }
-  // }
-
   .search-section {
     ::ng-deep {
       .mat-form-field-appearance-outline .mat-form-field-outline {
