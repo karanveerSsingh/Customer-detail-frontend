@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { Login } from './components/login/login';
 @Component({
   selector: 'app-root',
-  imports: [StudentComponent, Register, RouterOutlet, Login],
+  imports: [ RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
