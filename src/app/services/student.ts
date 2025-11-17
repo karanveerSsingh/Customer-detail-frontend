@@ -51,7 +51,9 @@ export class StudentService {
   // private apiUrl = 'http://localhost:3000/api/customers';
   // private apiUrl = 'http://192.168.1.27:3000/api/customers';
 
-  private apiUrl = environment.baseApiPath;
+  // private apiUrl = environment.baseApiPath; 
+
+  private apiUrl = environment.baseApiPath + '/api/customers'; // Corrected API endpoint to render
 
   constructor(private http: HttpClient) {}
 
