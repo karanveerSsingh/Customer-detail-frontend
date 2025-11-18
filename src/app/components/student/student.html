@@ -38,14 +38,6 @@
     </div>
   </div>
 
-  <!-- <div class="search-section">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search Here" class="search-input" />
-    <button class="search-button" type="button" (click)="search()">
-      <mat-icon>search</mat-icon>
-    </button>
-    <button class="clear-button" type="button" (click)="clearSearch()">Clear</button>
-  </div> -->
-
 
 <div class="search-section">
   <mat-form-field appearance="outline" class="">
@@ -54,7 +46,7 @@
     type="text"
     [(ngModel)]="searchTerm"
     (keyup.enter)="search()"
-    placeholder="Search Here"
+    placeholder="Search Here..."
     class="search-input"
     />
     <mat-icon matPrefix>search</mat-icon>

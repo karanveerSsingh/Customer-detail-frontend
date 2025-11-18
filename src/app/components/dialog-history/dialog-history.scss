@@ -4,6 +4,7 @@
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 316px;
+
   @media screen and (max-width: 567px) {
     height: 219px;
   }
@@ -12,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 10px;
     border-bottom: 1px solid var(--border-color);
     // background-color: var(--background-color);
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -25,6 +26,7 @@
       color: #222;
       @media screen and (max-width: 768px) {
         font-size: 18px;
+        // font-weight: 600;
       }
       @media screen and (max-width: 567px) {
         font-size: 16px;
@@ -42,7 +44,7 @@
       }
     }
   }
-  .no-payment {
+  .no-payments {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +52,7 @@
     width: 100%;
     margin: auto;
   }
+
   ul {
     list-style: none;
     padding: 0;
@@ -57,9 +60,9 @@
     overflow-y: auto;
     min-height: 200px;
     max-height: 265px;
-    @media screen and (min-width: 567px) {
-      min-height: 97px;
+    @media screen and (max-width: 567px) {
       max-height: 175px;
+      min-height: 97px;
     }
   }
 
@@ -79,7 +82,6 @@
       color: #607d8b;
       font-size: 0.97rem;
     }
-
     .separator {
       color: #607d8b;
     }

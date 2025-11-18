@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StudentService } from '../../services/student';
 import { MatIcon } from "@angular/material/icon";
 
+
 @Component({
   selector: 'app-dialog-history',
   templateUrl: './dialog-history.html',
@@ -12,7 +13,7 @@ import { MatIcon } from "@angular/material/icon";
   imports: [CommonModule, MatIcon],
 })
 export class DialogHistory implements OnInit {
-  readonly dialogRef = inject(MatDialogRef<DialogHistory>);
+    readonly dialogRef = inject(MatDialogRef<DialogHistory>);
   paymentHistory: any[] = [];
 
   constructor(
@@ -20,15 +21,15 @@ export class DialogHistory implements OnInit {
     private studentService: StudentService
   ) {}
 
+    onNoClick(): void {
+    this.dialogRef.close();
+  }
+
   ngOnInit() {
     if (this.data?.studentId) {
       this.studentService.getPaymentHistory(this.data.studentId).subscribe((history) => {
         this.paymentHistory = history;
       });
     }
-  }
-
-  onNoClick():void{
-    this.dialogRef.close();
   }
 }

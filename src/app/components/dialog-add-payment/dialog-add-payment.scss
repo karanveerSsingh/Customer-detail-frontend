@@ -63,23 +63,26 @@
   .dialog-add-payment-input {
     padding-left: 22px;
     ::ng-deep {
-      mat-icon {
-        color: var(--fontBlack);
-      }
-      .mat-mdc-form-field {
-        color: var(--fontBlack);
+      .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+        border-width: 0px;
       }
       .mat-mdc-form-field-flex {
         border: 1px solid var(--button-background-color);
         border-radius: 6px;
       }
-      .mat-mdc-form-field--outlined .mat-mdc-form-field-infix,
-      .mat-mdc-form-field--no-label .mat-mdc-form-field-infix {
+      .mat-icon {
+        color: var(--fontBlack);
+      }
+      .mat-mdc-form-field {
+        color: var(--fontBlack);
+      }
+      .mdc-text-field--outlined .mat-mdc-form-field-infix,
+      .mdc-text-field--no-label .mat-mdc-form-field-infix {
         padding-top: 10px;
         padding-bottom: 10px;
       }
-      .mat-mdc-form-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
-        border-width: 0px;
+      mat-icon{
+        color: var(--fontBlack);
       }
     }
   }
