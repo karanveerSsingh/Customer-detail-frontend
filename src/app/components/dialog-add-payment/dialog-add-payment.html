@@ -5,7 +5,6 @@
     </div>
     <div class="dialog-add-payment-close" (click)="onNoClick()"><mat-icon>close</mat-icon></div>
   </div>
-  <!-- <mat-dialog-content> -->
   <div class="dialog-add-payment-body">
     <div>
       Add payment for: <strong>{{ customerName }}</strong>
@@ -15,7 +14,7 @@
 
   <div class="dialog-add-payment-input">
     <mat-form-field appearance="outline" class="full-width">
-      <!-- <mat-label>Enter Amount</mat-label> -->
+
       <mat-icon matSuffix>currency_rupee</mat-icon>
       <input
         matInput
@@ -27,7 +26,6 @@
       />
     </mat-form-field>
   </div>
-  <!-- </mat-dialog-content> -->
 
   <div class="btns">
     <button (click)="onNoClick()">Cancel</button>

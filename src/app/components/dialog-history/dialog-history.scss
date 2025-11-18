@@ -3,7 +3,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: 316px;
+  height: 318px;
 
   @media screen and (max-width: 567px) {
     height: 219px;
@@ -15,7 +15,6 @@
     align-items: center;
     padding: 10px 10px;
     border-bottom: 1px solid var(--border-color);
-    // background-color: var(--background-color);
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     @media screen and (max-width: 567px) {
       padding: 6px 10px;
