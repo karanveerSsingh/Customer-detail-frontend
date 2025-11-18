@@ -1,16 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, inject, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { StudentService } from '../../services/student';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-dialog-history',
   templateUrl: './dialog-history.html',
   styleUrl: './dialog-history.scss',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIcon],
 })
 export class DialogHistory implements OnInit {
+  readonly dialogRef = inject(MatDialogRef<DialogHistory>);
   paymentHistory: any[] = [];
 
   constructor(
@@ -24,5 +26,9 @@ export class DialogHistory implements OnInit {
         this.paymentHistory = history;
       });
     }
+  }
+
+  onNoClick():void{
+    this.dialogRef.close();
   }
 }

@@ -1,26 +1,66 @@
 .history-dialog {
   background: #fff;
-  //   padding: 0 20px 24px  ;
   border-radius: 12px;
-  //   min-width: 320px;
-  //   max-width: 400px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  p {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    margin: 0;
-    padding: 10px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2d3a4b;
-    letter-spacing: 0.5px;
+  height: 316px;
+  @media screen and (max-width: 567px) {
+    height: 219px;
   }
 
+  .dialog-add-payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    // background-color: var(--background-color);
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    @media screen and (max-width: 567px) {
+      padding: 6px 10px;
+    }
+    .dialog-add-payment-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: #222;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 567px) {
+        font-size: 16px;
+      }
+    }
+    .dialog-add-payment-close {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.3s ease;
+      &:hover {
+        color: #555;
+      }
+    }
+  }
+  .no-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    margin: auto;
+  }
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
+    min-height: 200px;
+    max-height: 265px;
+    @media screen and (min-width: 567px) {
+      min-height: 97px;
+      max-height: 175px;
+    }
   }
 
   li {
@@ -38,6 +78,10 @@
     span {
       color: #607d8b;
       font-size: 0.97rem;
+    }
+
+    .separator {
+      color: #607d8b;
     }
 
     strong {

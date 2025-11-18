@@ -14,6 +14,9 @@
     border-bottom: 1px solid var(--border-color);
     // background-color: var(--background-color);
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    @media screen and (max-width: 567px) {
+      padding: 6px 10px;
+    }
     .dialog-add-payment-title {
       font-size: 20px;
       font-weight: 500;
@@ -57,8 +60,28 @@
       font-size: 14px;
     }
   }
-  .dialog-add-payment-input{
+  .dialog-add-payment-input {
     padding-left: 22px;
+    ::ng-deep {
+      mat-icon {
+        color: var(--fontBlack);
+      }
+      .mat-mdc-form-field {
+        color: var(--fontBlack);
+      }
+      .mat-mdc-form-field-flex {
+        border: 1px solid var(--button-background-color);
+        border-radius: 6px;
+      }
+      .mat-mdc-form-field--outlined .mat-mdc-form-field-infix,
+      .mat-mdc-form-field--no-label .mat-mdc-form-field-infix {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .mat-mdc-form-field--outlined:not(.mdc-text-field--disabled) .mat-mdc-notch-piece {
+        border-width: 0px;
+      }
+    }
   }
   .btns {
     display: flex;

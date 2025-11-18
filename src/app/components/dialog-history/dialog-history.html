@@ -1,9 +1,14 @@
 <div class="history-dialog">
-  <p>Payment History</p>
-  <div *ngIf="paymentHistory.length === 0">No payments yet.</div>
+  <div class="dialog-add-payment-header">
+    <div class="dialog-add-payment-title">
+      <div>Payment History</div>
+    </div>
+    <div class="dialog-add-payment-close" (click)="onNoClick()"><mat-icon>close</mat-icon></div>
+  </div>
+  <div class="no-payment" *ngIf="paymentHistory.length === 0">No payments yet.</div>
   <ul *ngIf="paymentHistory.length > 0">
     <li *ngFor="let p of paymentHistory">
-      <span>{{ p.date | date:'medium' }}</span> - <strong>₹{{ p.amount }}</strong>
+      <span>{{ p.date | date : 'medium' }}</span><span class="separator">-</span><strong>₹{{ p.amount }}</strong>
     </li>
   </ul>
 </div>
